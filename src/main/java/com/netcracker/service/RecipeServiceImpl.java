@@ -57,4 +57,19 @@ public class RecipeServiceImpl implements RecipeService {
     public List<Recipe> findByCuisine(Cuisine cuisine){
         return recipeDAO.findByCuisine(cuisine);
     }
+
+    @Transactional
+    public List<Recipe> findByCategory(Category category){
+        return recipeDAO.findByCategory(category);
+    }
+
+    @Transactional
+    public List<Recipe> findByName(String name){
+        return recipeDAO.findByName(name);
+    }
+
+    @Transactional
+    public void update(Recipe recipe){
+        recipeDAO.update(recipe);
+    }
 }

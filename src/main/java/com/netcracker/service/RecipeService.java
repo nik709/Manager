@@ -26,4 +26,10 @@ public interface RecipeService {
 
     public List<Recipe> findByCuisine(Cuisine cuisine);
 
+    public List<Recipe> findByCategory(Category category);
+
+    public List<Recipe> findByName(String name);
+
+    public void update(Recipe recipe);
+
 }

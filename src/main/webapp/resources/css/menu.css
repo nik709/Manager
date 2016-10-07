@@ -1,0 +1,19 @@
+@import "base.css";
+#sidebar, #content { position: absolute; }
+#sidebar, #content { overflow: auto; padding: 10px; }
+#header {
+    height: 130px; /* Высота слоя */
+    background: #FEDFC0; border-bottom: 2px solid #7B5427;
+}
+#header h1 { padding: 20px; margin: 0; font-size: 60px }
+#sidebar {
+    width: 250px; background: #ECF5E4; border-right: 1px solid #231F20;
+    top: 132px; /* Расстояние от верхнего края */
+    bottom: 0; /* Расстояние снизу  */
+    font-size: 35px;
+}
+#content {
+    top: 132px; /* Расстояние от верхнего края */
+    left: 270px; /* Расстояние от левого края */
+    bottom: 0; right: 0;
+}

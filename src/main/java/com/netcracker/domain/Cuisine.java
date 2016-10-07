@@ -62,4 +62,32 @@ public class Cuisine {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
+
+    public Cuisine toCuisine(String cuisine){
+        int startIndex = 0;
+        int endIndex;
+        String idS;
+
+        while (cuisine.charAt(startIndex) != '=')
+            startIndex++;
+        startIndex++;
+        endIndex = startIndex;
+
+        while (cuisine.charAt(endIndex) != ',')
+            endIndex++;
+        idS = cuisine.substring(startIndex, endIndex);
+        id = Integer.valueOf(idS);
+        startIndex = endIndex;
+
+        while (cuisine.charAt(startIndex) != '\'')
+            startIndex++;
+        startIndex++;
+        endIndex = startIndex;
+
+        while(cuisine.charAt(endIndex) != '}')
+            endIndex++;
+        name = cuisine.substring(startIndex, endIndex);
+
+        return this;
+    }
 }

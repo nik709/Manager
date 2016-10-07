@@ -13,4 +13,8 @@ public class CompositionDAOImpl extends BaseDAOImpl<Composition> implements Comp
     public CompositionDAOImpl(){
         super(Composition.class);
     }
+
+    public void update(Composition composition){
+        sessionFactory.getCurrentSession().update(composition);
+    }
 }

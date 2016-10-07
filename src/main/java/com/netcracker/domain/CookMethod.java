@@ -62,4 +62,28 @@ public class CookMethod {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+    public CookMethod toCookMethod(String method){
+        int startIndex = 0;
+        int endIndex;
+        String idS;
+        while (method.charAt(startIndex) != '=')
+            startIndex++;
+        startIndex++;
+        endIndex = startIndex;
+        while (method.charAt(endIndex) != ',')
+            endIndex++;
+        idS = method.substring(startIndex, endIndex);
+        id = Integer.valueOf(idS);
+        startIndex = endIndex;
+        while (method.charAt(startIndex) != '\'')
+            startIndex++;
+        startIndex++;
+        endIndex = startIndex;
+        while(method.charAt(endIndex) != '}')
+            endIndex++;
+        name = method.substring(startIndex, endIndex);
+
+        return this;
+    }
 }

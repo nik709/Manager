@@ -5,6 +5,7 @@
   Time: 15:28
   To change this template use File | Settings | File Templates.
 --%>
+<link rel="stylesheet" type="text/css" href="/resources/css/base.css">
 <%@ page language="java" contentType="text/html; charset=utf8"
          pageEncoding="utf8" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
@@ -17,32 +18,28 @@
 </head>
 <body>
 
+<a href="/MenuPage"><img src="/resources/pictures/back.png"></a>
+
 <h1><spring:message code="ingredient.list"/></h1>
 
 <form>
-<c:if test="${!empty ingredientList}">
-    <table>
-        <tr>
-            <th><spring:message text="id"/></th>
-            <th><spring:message text="name"/></th>
-            <th>&nbsp;</th>
-        </tr>
-        <c:forEach items="${ingredientList}" var="i">
+    <c:if test="${!empty ingredientList}">
+        <table class="searchTable">
             <tr>
-                <td>${i.id}</td>
-                <td>${i.name}</td>
-                <td>
-                    <input type="checkbox" name="id" value="${i.id}">
-                </td>
+                <th class="searchTh"><spring:message text="name"/></th>
+                <th class="searchTh">&nbsp;</th>
             </tr>
-        </c:forEach>
-        <tr>
-            <td>
-                <input type="submit" value="<spring:message code="label.search"/>">
-            </td>
-        </tr>
-    </table>
-</c:if>
+            <c:forEach items="${ingredientList}" var="i">
+                <tr>
+                    <td class="searchTd">${i.name}</td>
+                    <td class="searchTd">
+                        <input class="bigbox" type="checkbox" name="id" value="${i.id}">
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+        <input class="searchSubmit" type="submit" value="<spring:message code="label.search"/>">
+    </c:if>
 </form>
 <%
     String select[] = request.getParameterValues("id");
@@ -56,25 +53,26 @@
 
 
 <c:if test="${!empty recipes}">
-    <table>
+    <table class="searchTable2">
         <h2><spring:message code="recipe.list"/></h2>
         <tr>
-            <th><spring:message text="ID"/></th>
-            <th><spring:message code="label.name"/></th>
-            <th><spring:message code="entity.category"/></th>
-            <th><spring:message code="entity.Cuisune"/></th>
-            <th><spring:message code="entity.CookMethod"/></th>
-            <th><spring:message code="entity.Time"/></th>
-            <th>&nbsp;</th>
+            <th class="searchTh"><spring:message code="label.name"/></th>
+            <th class="searchTh"><spring:message code="entity.category"/></th>
+            <th class="searchTh"><spring:message code="entity.Cuisune"/></th>
+            <th class="searchTh"><spring:message code="entity.CookMethod"/></th>
+            <th class="searchTh"><spring:message code="entity.Time"/></th>
+            <th class="searchTh">&nbsp;</th>
+            <th class="searchTh">&nbsp;</th>
         </tr>
         <c:forEach items="${recipes}" var="i">
             <tr>
-                <td>${i.id}</td>
-                <td>${i.name}</td>
-                <td>${i.category.name}</td>
-                <td>${i.cuisine.name}</td>
-                <td>${i.method.name}</td>
-                <td>${i.time.name}</td>
+                <td class="searchTd">${i.name}</td>
+                <td class="searchTd">${i.category.name}</td>
+                <td class="searchTd">${i.cuisine.name}</td>
+                <td class="searchTd">${i.method.name}</td>
+                <td class="searchTd">${i.time.name}</td>
+                <td class="searchTd"><a href="/showComment/${i.id}"><spring:message code="label.comment"/></a></td>
+                <td class="searchTd"><a href="/addComment/${i.id}"><spring:message code="label.addComment"/></a></td>
             </tr>
         </c:forEach>
     </table>

@@ -61,4 +61,28 @@ public class Time {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
+
+    public Time toTime(String time){
+        int startIndex = 0;
+        int endIndex;
+        String idS;
+        while (time.charAt(startIndex) != '=')
+            startIndex++;
+        startIndex++;
+        endIndex = startIndex;
+        while (time.charAt(endIndex) != ',')
+            endIndex++;
+        idS = time.substring(startIndex, endIndex);
+        id = Integer.valueOf(idS);
+        startIndex = endIndex;
+        while (time.charAt(startIndex) != '\'')
+            startIndex++;
+        startIndex++;
+        endIndex = startIndex;
+        while(time.charAt(endIndex) != '}')
+            endIndex++;
+        name = time.substring(startIndex, endIndex);
+
+        return this;
+    }
 }

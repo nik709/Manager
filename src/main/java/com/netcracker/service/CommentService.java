@@ -1,6 +1,7 @@
 package com.netcracker.service;
 
 import com.netcracker.domain.Comment;
+import com.netcracker.domain.Recipe;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface CommentService {
     public List<Comment> list();
 
     public void remove(Integer id);
+
 }

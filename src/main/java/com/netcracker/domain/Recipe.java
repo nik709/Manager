@@ -32,7 +32,22 @@ public class Recipe {
     @OneToOne
     private Time time;
 
-    @OneToMany
+    @Transient
+    private String categoryString;
+
+    @Transient
+    private String cuisineString;
+
+    @Transient
+    private String methodString;
+
+    @Transient
+    private String timeString;
+
+    @Transient
+    private String[] ingredients;
+
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Comment> comments;
 
     public List<Comment> getComments() {
@@ -142,5 +157,45 @@ public class Recipe {
                 ", time=" + time +
                 ", comments=" + comments +
                 '}';
+    }
+
+    public String getCategoryString() {
+        return categoryString;
+    }
+
+    public void setCategoryString(String categoryString) {
+        this.categoryString = categoryString;
+    }
+
+    public String getCuisineString() {
+        return cuisineString;
+    }
+
+    public void setCuisineString(String cuisineString) {
+        this.cuisineString = cuisineString;
+    }
+
+    public String getMethodString() {
+        return methodString;
+    }
+
+    public void setMethodString(String methodString) {
+        this.methodString = methodString;
+    }
+
+    public String getTimeString() {
+        return timeString;
+    }
+
+    public void setTimeString(String timeString) {
+        this.timeString = timeString;
+    }
+
+    public String[] getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String[] ingredients) {
+        this.ingredients = ingredients;
     }
 }

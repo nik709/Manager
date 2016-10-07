@@ -14,4 +14,6 @@ public interface CategoryService {
     public List<Category> list();
 
     public void remove(Integer id);
+
+    public Category findById(Integer id);
 }

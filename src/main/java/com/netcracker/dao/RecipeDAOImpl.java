@@ -37,8 +37,10 @@ public class RecipeDAOImpl extends BaseDAOImpl<Recipe> implements RecipeDAO {
         for (Composition composition:compositions){
             List<Ingredient> ingredients = composition.getIngredient();
             for (Ingredient ingr:ingredientList){
-                if (ingredients.contains(ingr))
+                if (ingredients.contains(ingr)) {
                     recipes.add(composition.getRecipe());
+                    break;
+                }
             }
         }
 
@@ -57,5 +59,23 @@ public class RecipeDAOImpl extends BaseDAOImpl<Recipe> implements RecipeDAO {
         String query = "from Recipe where cuisine_cuisine_id = " + cuisine.getId();
 
         return sessionFactory.getCurrentSession().createQuery(query).list();
+    }
+
+    public List<Recipe> findByCategory(Category category) {
+
+        String query = "from Recipe where category_category_id = " + category.getId();
+
+        return sessionFactory.getCurrentSession().createQuery(query).list();
+    }
+
+    public List<Recipe> findByName(String name){
+
+        String query = "from Recipe where name = " + name;
+
+        return sessionFactory.getCurrentSession().createQuery(query).list();
+    }
+
+    public void update(Recipe recipe){
+        sessionFactory.getCurrentSession().update(recipe);
     }
 }

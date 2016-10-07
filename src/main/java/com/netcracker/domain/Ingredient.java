@@ -60,4 +60,32 @@ public class Ingredient implements Serializable {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
+
+    public Ingredient toIngredient(String ingredient){
+        int startIndex = 0;
+        int endIndex;
+        String idS;
+
+        while (ingredient.charAt(startIndex) != '=')
+            startIndex++;
+        startIndex++;
+        endIndex = startIndex;
+
+        while (ingredient.charAt(endIndex) != ',')
+            endIndex++;
+        idS = ingredient.substring(startIndex, endIndex);
+        id = Integer.valueOf(idS);
+        startIndex = endIndex;
+
+        while (ingredient.charAt(startIndex) != '\'')
+            startIndex++;
+        startIndex++;
+        endIndex = startIndex;
+
+        while(ingredient.charAt(endIndex) != '}')
+            endIndex++;
+        name = ingredient.substring(startIndex, endIndex);
+
+        return this;
+    }
 }

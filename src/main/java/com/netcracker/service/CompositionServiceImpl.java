@@ -31,4 +31,9 @@ public class CompositionServiceImpl implements CompositionService {
     public void remove(Integer id) {
         compositionDAO.remove(id);
     }
+
+    @Transactional
+    public void update(Composition composition){
+        compositionDAO.update(composition);
+    }
 }

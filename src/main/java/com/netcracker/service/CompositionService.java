@@ -14,4 +14,6 @@ public interface CompositionService {
     public List<Composition> list();
 
     public void remove(Integer id);
+
+    public void update(Composition composition);
 }

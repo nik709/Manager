@@ -31,4 +31,9 @@ public class CategoryServiceImpl implements CategoryService {
     public void remove(Integer id) {
         categoryDAO.remove(id);
     }
+
+    @Transactional
+    public Category findById(Integer id) {
+        return categoryDAO.findById(id);
+    }
 }
